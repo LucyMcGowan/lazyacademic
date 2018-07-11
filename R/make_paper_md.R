@@ -1,0 +1,51 @@
+#' Make markdown documents for papers
+#'
+#' This function will create markdown documents in the Hugo Academic style for papers
+#' specified in a Google Sheet.
+#'
+#' @param dir The directory you would like the markdown documents to be saved in
+#' @param id Your Google Sheet id
+#' @export
+#'
+make_paper_md <- function(dir, id = "1HPQDH3tOXtZb1DV--8wR9CKAzUz5aywWc2vM3OQ5SrU") {
+  gs <- googlesheets::gs_key(id, lookup = TRUE, verbose = FALSE)
+  d <- suppressMessages(googlesheets::gs_read(gs, verbose = FALSE))
+  d <- d[d$type == "article", ]
+  md <- glue::glue_data(d, {
+    "+++
+title = \"{title}\"
+date = {date}
+authors = [\"{authors}\"]
+publication_types = [\"{pub_type}\"]
+
+publication = \"In *{publication}*\"
+
+abstract = \"{abstract}\"
+
+selected = {selected}
+
+url_pdf = \"{url_pdf}\"
+
+
+math = true
+highlight = true
+[header]
+image = \"\"
+caption = \"\"
++++
+"
+  }, .na = "")
+
+  file_base <- purrr::map_chr(d$bib, ~ strsplit(.x, '[{,]')[[1]][2])
+  file_name <- glue::glue("{dir}/{file_base}.md")
+  purrr::walk2(md, file_name, writeLines)
+}
+
+# url_preprint = ""
+# url_code = ""
+# url_dataset = ""
+# url_project = ""
+# url_slides = ""
+# url_video = ""
+# url_poster = ""
+# url_source = ""

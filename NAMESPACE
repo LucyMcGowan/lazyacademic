@@ -2,3 +2,4 @@
 
 export(make_paper_bib)
 export(make_paper_md)
+export(make_talk_md)

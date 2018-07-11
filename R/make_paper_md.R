@@ -25,7 +25,14 @@ abstract = \"{abstract}\"
 selected = {selected}
 
 url_pdf = \"{url_pdf}\"
-
+url_preprint = \"{url_preprint}\"
+url_code = \"{url_code}\"
+url_dataset = \"{url_dataset}\"
+url_project = \"{url_project}\"
+url_slides = \"{url_slides}\"
+url_video = \"{url_video}\"
+url_poster = \"{url_poster}\"
+url_source = \"{url_source}\"
 
 math = true
 highlight = true

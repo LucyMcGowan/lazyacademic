@@ -1,0 +1,18 @@
+#' Make .bib files for papers
+#'
+#' This function will create .bib files in the Hugo Academic style for papers
+#' specified in a Google Sheet.
+#'
+#' @param dir The directory you would like the markdown documents to be saved in
+#' @param id Your Google Sheet id
+#' @export
+make_paper_bib <- function(dir, id = "1HPQDH3tOXtZb1DV--8wR9CKAzUz5aywWc2vM3OQ5SrU") {
+  gs <- googlesheets::gs_key(id, lookup = TRUE, verbose = FALSE)
+  d <- suppressMessages(googlesheets::gs_read(gs, verbose = FALSE))
+  d <- d[d$type == "article", ]
+  bib <- d$bib
+
+  file_base <- purrr::map_chr(d$bib, ~ strsplit(.x, '[{,]')[[1]][2])
+  file_name <- glue::glue("{dir}/{file_base}.bib")
+  purrr::walk2(bib, file_name, writeLines)
+}

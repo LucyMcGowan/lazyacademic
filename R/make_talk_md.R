@@ -19,6 +19,7 @@ event = \"(where)\"
 time_start = (start)
 time_end = (end)
 
+abstract = \"(abstract)\"
 url_custom = [{name = \"Link\", url = \"(link)\"}]
 +++
 "

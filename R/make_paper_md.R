@@ -25,7 +25,7 @@ publication = \"In *{publication}*\"
 
 abstract = \"{abstract}\"
 
-selected = {selected}
+selected = {tolower(selected)}
 
 url_pdf = \"{url_pdf}\"
 url_preprint = \"{url_preprint}\"

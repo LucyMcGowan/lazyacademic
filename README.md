@@ -11,6 +11,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://ci.appveyor.com/api/projects/status/github/mcguinlu/lazyacademic?branch=master&svg=true)](https://ci.appveyor.com/project/mcguinlu/lazyacademic)
 [![Travis build
 status](https://travis-ci.com/mcguinlu/lazyacademic.svg?branch=master)](https://travis-ci.com/mcguinlu/lazyacademic)
+[![pkgdown](https://github.com/mcguinlu/lazyacademic/workflows/pkgdown/badge.svg)](https://mcguinlu.github.io/lazyacademic/)
 <!-- badges: end -->
 
 The goal of lazyacademic is to …

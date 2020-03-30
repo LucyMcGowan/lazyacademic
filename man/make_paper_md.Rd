@@ -4,10 +4,17 @@
 \alias{make_paper_md}
 \title{Make markdown documents for publications}
 \usage{
-make_paper_md(data, dir = "./content/publication", create = TRUE)
+make_paper_md(
+  data,
+  sheet_name = "Sheet1",
+  dir = "./content/publication",
+  create = TRUE
+)
 }
 \arguments{
 \item{data}{The URL or a Sheet ID, which ident}
+
+\item{sheet_name}{Defines the sheet from which to read information on papers. Default is "Sheet1"}
 
 \item{dir}{The directory you would like the markdown documents to be saved
 in. Defaults to the correct folder for publication files when using the

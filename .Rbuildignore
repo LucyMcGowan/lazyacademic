@@ -1,4 +1,5 @@
 ^.*\.Rproj$
+.github/
 ^\.Rproj\.user$
 ^\.httr-oauth$
 ^README\.Rmd$
@@ -9,3 +10,4 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+content/

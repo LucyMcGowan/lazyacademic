@@ -10,7 +10,8 @@ Authors@R: c(
     person(given = "Lucy",
            family = "D'Agostino McGowan",
            role = c("aut"), 
-           comment = "Lucy was the original maintainer of the package."))
+           comment = c(ORCID = "0000-0001-7297-9359",
+                       "Lucy was the original maintainer of the package.")))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 VignetteBuilder: 

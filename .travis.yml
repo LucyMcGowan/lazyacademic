@@ -1,0 +1,26 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: r
+
+before_install:
+  - sudo apt-get update
+
+sudo: required
+
+r:
+  - release
+
+addons:
+  apt:
+    packages:
+      - libv8-dev
+
+after_success:
+  - Rscript -e 'covr::codecov()'
+
+before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE, ssh_id = Sys.getenv("TRAVIS_DEPLOY_KEY", ""))'
+  skip_cleanup: true

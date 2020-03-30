@@ -4,24 +4,60 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
 
 # lazyacademic
 
-This package is used to automatically generate files for the Hugo Academic blogdown template by pulling data from a Google Sheet. (This is in very slow development, currently likely just works for me.)
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/mcguinlu/lazyacademic?branch=master&svg=true)](https://ci.appveyor.com/project/mcguinlu/lazyacademic)
+[![Travis build status](https://travis-ci.org/mcguinlu/lazyacademic.svg?branch=master)](https://travis-ci.org/mcguinlu/lazyacademic)
+<!-- badges: end -->
+
+The goal of lazyacademic is to ...
 
 ## Installation
 
-You can install lazyacademic from github with:
+You can install the released version of lazyacademic from [CRAN](https://CRAN.R-project.org) with:
 
-```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("LucyMcGowan/lazyacademic")
+``` r
+install.packages("lazyacademic")
 ```
 
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("mcguinlu/lazyacademic")
+```
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(lazyacademic)
+## basic example code
+```
+
+What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+
+```{r cars}
+summary(cars)
+```
+
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+
+You can also embed plots, for example:
+
+```{r pressure, echo = FALSE}
+plot(pressure)
+```
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

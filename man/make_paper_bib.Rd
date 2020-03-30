@@ -4,12 +4,12 @@
 \alias{make_paper_bib}
 \title{Make .bib files for papers}
 \usage{
-make_paper_bib(dir, id = "1HPQDH3tOXtZb1DV--8wR9CKAzUz5aywWc2vM3OQ5SrU")
+make_paper_bib(sheet_id, dir = "./static/files/citations")
 }
 \arguments{
-\item{dir}{The directory you would like the markdown documents to be saved in}
+\item{sheet_id}{Your Google Sheet id}
 
-\item{id}{Your Google Sheet id}
+\item{dir}{The directory you would like the markdown documents to be saved in}
 }
 \description{
 This function will create .bib files in the Hugo Academic style for papers

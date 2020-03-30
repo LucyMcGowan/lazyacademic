@@ -2,14 +2,19 @@
 % Please edit documentation in R/make_paper_md.R
 \name{make_paper_md}
 \alias{make_paper_md}
-\title{Make markdown documents for papers}
+\title{Make markdown documents for publications}
 \usage{
-make_paper_md(dir, id = "1HPQDH3tOXtZb1DV--8wR9CKAzUz5aywWc2vM3OQ5SrU")
+make_paper_md(data, dir = "./content/publication", create = TRUE)
 }
 \arguments{
-\item{dir}{The directory you would like the markdown documents to be saved in}
+\item{data}{The URL or a Sheet ID, which ident}
 
-\item{id}{Your Google Sheet id}
+\item{dir}{The directory you would like the markdown documents to be saved
+in. Defaults to the correct folder for publication files when using the
+Hugo Academic blogdown template.}
+
+\item{create}{Logicial. If the specified directory doesn't exists, should it
+be created? Default is TRUE.}
 }
 \description{
 This function will create markdown documents in the Hugo Academic style for papers

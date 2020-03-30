@@ -1,12 +1,31 @@
 Package: lazyacademic
-Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.1
+Authors@R: c(
+    person(given = "Luke",
+           family = "McGuinness",
+           role = c("aut", "cre"),
+           email = "luke.mcguinness@bristol.ac.uk",
+           comment = c(ORCID = "0000-0001-8730-9761")), 
+    person(given = "Lucy",
+           family = "D'Agostino McGowan",
+           role = c("aut"), 
+           comment = "Lucy was the original maintainer of the package."))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+Imports: 
+    stringr,
+    googlesheets4,
+    glue,
+    purrr,
+    tools,
+    rio
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 2.1.0)
+RoxygenNote: 7.0.1

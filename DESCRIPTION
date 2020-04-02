@@ -29,4 +29,6 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 2.1.0)
+Remotes:
+    tidyverse/googlesheets4
 RoxygenNote: 7.0.1

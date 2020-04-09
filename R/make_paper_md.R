@@ -1,19 +1,28 @@
 #' Make markdown documents for publications
 #'
-#' This function will create markdown documents in the Hugo Academic style for papers
-#' specified in a Google Sheet.
+#' This function will create markdown documents in the Hugo Academic style for
+#' papers specified in an Excel spreadsheet, CSV file, or Google Sheet.
 #'
-#' @param data The URL or a Sheet ID, which ident
+#' @param data The file containing your data
+#' @param sheet_name Defines the sheet from which to read information on papers.
+#'   Default is "papers"
 #' @param dir The directory you would like the markdown documents to be saved
 #'   in. Defaults to the correct folder for publication files when using the
 #'   Hugo Academic blogdown template.
-#' @param sheet_name Defines the sheet from which to read information on papers. Default is "Sheet1"
+#' @param folder Create each record within it's own folder in the main directory
+#'   (TRUE), or simply create the files (FALSE). Default is TRUE
 #' @param create Logicial. If the specified directory doesn't exists, should it
 #'   be created? Default is TRUE.
+#'
 #' @export
 #'
-make_paper_md <- function(data, sheet_name = "Sheet1", dir = "./content/publication", create = TRUE) {
+make_paper_md <- function(data,
+                          sheet_name = "papers",
+                          dir = "./content/publication",
+                          folder = TRUE,
+                          create = TRUE) {
 
+  # Get import file type and import data
   if (tools::file_ext(data) %in% c("csv","xlsx", "xls")) {
     d <- rio::import(data, which = sheet_name)
   } else {
@@ -25,14 +34,17 @@ make_paper_md <- function(data, sheet_name = "Sheet1", dir = "./content/publicat
 
   # Reformat tags
   if (!is.na(d$tags[row])) {
-  d$tags[row] <- paste(trimws(unlist(stringr::str_split(d$tags[row], ","))),collapse = "\",\"")
-  d$tags[row] <- gsub(" ", "-",d$tags[row])
+    d$tags[row] <-
+      paste(trimws(unlist(stringr::str_split(d$tags[row], ","))), collapse = "\",\"")
+    d$tags[row] <- gsub(" ", "-",d$tags[row])
   } else  {
   d$tags[row] <- ""
   }
 
   # Seperate authors by comma,
-  d$authors[row] <- paste(trimws(unlist(stringr::str_split(d$authors[row], ","))),collapse = "\",\"")
+    d$authors[row] <-
+      paste(trimws(unlist(stringr::str_split(d$authors[row], ","))),
+            collapse = "\",\"")
 
   }
 
@@ -91,7 +103,30 @@ caption = \"\"
 
   # Create filenames
   file_base <- purrr::map_chr(d$bib, ~ strsplit(.x, '[{,]')[[1]][2])
+
+  if (folder == TRUE) {
+  file_folder <- glue::glue("{dir}/{file_base} ")
+
+  for (folder_no in 1:length(file_folder)) {
+
+    if (!dir.exists(file_folder[folder_no])) {
+      if (create == TRUE) {
+        dir.create(file.path(file_folder[folder_no]), recursive = TRUE)
+      } else {
+        stop(
+          "Specified directory doesn't exist: ",
+          file_folder[folder_no],
+          "\n  Use the `create = TRUE` argument to create the directory."
+        )
+      }
+
+    }
+  }
+
+  file_name <- glue::glue("{dir}/{file_base}/{file_base}.md")
+  } else {
   file_name <- glue::glue("{dir}/{file_base}.md")
+  }
 
   # Provide messages about changes
   for (file in 1:length(file_name)) {
@@ -103,6 +138,7 @@ caption = \"\"
   }
 
   # Write new files
+
   purrr::walk2(md, file_name, writeLines)
 
 }

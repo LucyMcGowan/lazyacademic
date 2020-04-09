@@ -4,14 +4,30 @@
 \alias{make_talk_md}
 \title{Make markdown files for talks}
 \usage{
-make_talk_md(dir, id = "1-PItelqpv0Sb_LdiEDqb8O3D_Roii5nVTL07IRVbRtA")
+make_talk_md(
+  data,
+  sheet_name = "talks",
+  dir = "./content/talk",
+  folder = TRUE,
+  create = TRUE
+)
 }
 \arguments{
+\item{data}{The location of the file containing your data. Can be a path to a
+local Excel/CSV file, or the URL of a Google Sheet.}
+
+\item{sheet_name}{Defines the sheet from which to read information on talks.
+Default is "talks"}
+
 \item{dir}{The directory you would like the markdown documents to be saved in}
 
-\item{id}{Your Google Sheet id}
+\item{folder}{Create each record within it's own folder in the main directory
+(TRUE), or simply create the files (FALSE). Default is TRUE}
+
+\item{create}{Logicial. If the specified directory doesn't exists, should it
+be created? Default is TRUE.}
 }
 \description{
 This function will create markdown files in the Hugo Academic style for talks
-specified in a Google Sheet.
+specified in an Excel spreadsheet, CSV file, or Google Sheet.
 }

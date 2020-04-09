@@ -4,14 +4,30 @@
 \alias{make_paper_bib}
 \title{Make .bib files for papers}
 \usage{
-make_paper_bib(sheet_id, dir = "./static/files/citations")
+make_paper_bib(
+  data,
+  dir = "./static/files/citations",
+  sheet_name = "papers",
+  folder = FALSE,
+  create = TRUE
+)
 }
 \arguments{
-\item{sheet_id}{Your Google Sheet id}
+\item{data}{The location of the file containing your data. Can be a path to a
+local Excel/CSV file, or the URL of a Google Sheet.}
 
 \item{dir}{The directory you would like the markdown documents to be saved in}
+
+\item{sheet_name}{Defines the sheet from which to read information on talks.
+Default is "talks"}
+
+\item{folder}{Create each record within it's own folder in the main directory
+(TRUE), or simply create the files (FALSE). Default is TRUE}
+
+\item{create}{Logicial. If the specified directory doesn't exists, should it
+be created? Default is TRUE.}
 }
 \description{
 This function will create .bib files in the Hugo Academic style for papers
-specified in a Google Sheet.
+specified in an Excel spreadsheet, CSV file, or Google Sheet.
 }

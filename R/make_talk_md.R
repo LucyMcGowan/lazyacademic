@@ -7,7 +7,7 @@
 #' @param id Your Google Sheet id
 #' @export
 make_talk_md <- function(dir, id = "1-PItelqpv0Sb_LdiEDqb8O3D_Roii5nVTL07IRVbRtA") {
-  d <- googlesheets4::sheets_read(googlesheets4::as_sheets_id(id))
+  d <- googlesheets4::range_read(googlesheets4::as_sheets_id(id))
   d <- d[d$manual == 0, ]
   md <- glue::glue_data(d, {
     "+++

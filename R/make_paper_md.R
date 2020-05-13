@@ -8,8 +8,7 @@
 #' @export
 #'
 make_paper_md <- function(dir, id = "1HPQDH3tOXtZb1DV--8wR9CKAzUz5aywWc2vM3OQ5SrU") {
-  gs <- googlesheets::gs_key(id, lookup = TRUE, verbose = FALSE)
-  d <- suppressMessages(googlesheets::gs_read(gs, verbose = FALSE))
+  d <- googlesheets4::sheets_read(googlesheets4::as_sheets_id(id))
   d <- d[d$type == "article", ]
   md <- glue::glue_data(d, {
     "+++

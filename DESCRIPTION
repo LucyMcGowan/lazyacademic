@@ -1,6 +1,6 @@
-Package: lazyacademic
+Package: lazyapero
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Create files for the Apero Hugo Template
 Version: 0.1.0
 Author: Lucy D'Agostino MCGowan
 Maintainer: Lucy D'Agostino McGowan <lucydagostino@gmail.com>
